@@ -1,0 +1,31 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt(); // Number of test cases
+
+        while (t-- > 0) {
+            int n = sc.nextInt(); // Number of elements in the array
+            int[] arr = new int[n]; // Array to store elements
+            int M_dif = Integer.MAX_VALUE; // Initialize maximum difference to a large value
+
+            for (int i = 0; i < n; i++) {
+                arr[i] = sc.nextInt(); // Input array elements
+            }
+
+            Arrays.sort(arr); // Sort the array (you can remove this line if not required)
+
+            // Iterate through the array to find the minimum non-zero difference
+            for (int i = 1; i < n; i++) {
+                int dif = arr[i] - arr[i - 1];
+                if (dif != 0 && dif < M_dif) {
+                    M_dif = dif;
+                    if (M_dif == 1) break; // Optimization: If the minimum difference is 1, no need to continue.
+                }
+            }
+
+            System.out.println(M_dif); // Output the minimum non-zero difference
+        }
+    }
+}
