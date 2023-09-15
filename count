@@ -1,0 +1,39 @@
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+		Scanner sc =new Scanner(System.in);
+		int t=sc.nextInt();
+		while(t-->0){
+		int n=sc.nextInt();
+		int[] arr=new int[n];
+		int c=0;
+		
+		for(int i=0;i<n;i++){
+		arr[i]=sc.nextInt();
+		}
+		Arrays.sort(arr);
+		for(int i=0;i<n-1;i++){
+		if(arr[i]!=arr[i+1]) 
+		   c++;
+		}
+		System.out.println(c+1);
+		}
+	}
+//2nd ques
+ public static int countDigits(int n){
+        // Write your code here.
+       int count=0;
+       int temp =n;
+
+       while(temp>0){
+         int d=temp%10;
+         if(d !=0 && n%d==0){
+            count +=1;
+         }           
+        temp = temp/10;      
+        }        
+        return count;  
+    }
+}
