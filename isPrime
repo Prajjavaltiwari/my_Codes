@@ -1,0 +1,28 @@
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		while(t-->0){
+		  int a=sc.nextInt(); 
+		  int b=sc.nextInt();
+		  int x=a+b;
+		  
+		  if(!isPrime(x)) System.out.println("Bob");
+		  else{
+		  System.out.println("Alice");
+		  }
+		}
+	}
+	static boolean isPrime(int x){
+	    int c=0;
+	    for (int i=1;i<=x;i++){
+	    if(x%i==0) c++;
+	        
+	    }
+	    if(c==2) return true;
+	    return false;   //else
+	}
+}
