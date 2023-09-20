@@ -1,0 +1,27 @@
+import java.util.*;
+public class Main {
+	
+	public static void main(String[] args) {
+		// Write your code here
+	 Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        if(Armstrong(n)!=n) System.out.println("false");
+		else{
+			System.out.println("true");
+		}
+	}
+	static int Armstrong(int n){
+		int temp=n;
+		int c=0,y=0;
+        while(temp>0){
+            c++;
+            temp/=10;
+        }
+		temp=n;
+        while(temp!=0){
+            y+=(int)Math.pow(temp%10,c);
+            temp/=10;
+        }
+		return y;
+	}
+}
