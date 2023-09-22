@@ -1,0 +1,23 @@
+class Codechef
+{
+    public static int gcd (int a , int b){
+        if(a==0){
+            return b;
+        }
+        return gcd(b%a,a);
+    }
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		while(t-->0){
+		  int x=sc.nextInt();
+		  int y=sc.nextInt();
+		               // Gretest common divisior gcd(or hcf)
+		  int ans=gcd(x,y);
+		  System.out.println(ans);
+		   
+		}
+	}
+}
