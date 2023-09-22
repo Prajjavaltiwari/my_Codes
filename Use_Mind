@@ -1,0 +1,41 @@
+//https://www.codechef.com/practice/INTNT01/problems/DIVIDEMAKEEQ?tab=statement
+/* package codechef; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Codechef
+{
+    
+    static int gcd(int small, int big) {
+        if(small==0)
+            return big;
+        return gcd(big%small, small); 
+    }
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+		Scanner sc = new Scanner(System.in);
+		int t=sc.nextInt();
+		
+		while(t-- > 0) {
+            int n=sc.nextInt();
+            int[] nums = new int[n];
+            for(int i=0;i<n;i++) {
+                nums[i]=sc.nextInt();
+            }
+            
+            int gcd=nums[0];
+            for(int i=0;i<n;i++) {
+                gcd=gcd(gcd,nums[i]);
+            }
+            int count=0;
+            for(int ele: nums){
+                if(ele!=gcd) count++;
+            }
+            System.out.println(count);
+		}
+	}
+}
