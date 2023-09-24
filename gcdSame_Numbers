@@ -1,0 +1,68 @@
+import java.util.*;
+
+class Codechef {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        while (t > 0) {
+            int N = sc.nextInt();
+            int[] A = new int[N];
+            int p = 0;
+            for (int i = 0; i < N; i++) {
+                A[i] = sc.nextInt();
+                p = gcd(p, A[i]); // Calculate GCD while reading input
+            }
+            int count = 0;
+            for (int i = 0; i < N; i++) {
+                if (A[i] != p) {
+                    count++;
+                }
+            }
+            System.out.println(count);
+            t--;
+        }
+    }
+
+    static int gcd(int a, int b) {
+        while (b != 0) {
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+    }
+}
+
+
+// <OR>
+
+	// your code goes here
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		while(t-->0){
+		    int n=sc.nextInt();
+		    int[] arr=new int[n];
+		    for(int i=0;i<n;i++)arr[i]=sc.nextInt();
+		    if(n==1){
+		        System.out.println(0);
+		        continue;
+		    }
+		    int min=Integer.MAX_VALUE;
+		    for(int num:arr)min=Math.min(min,num);
+		    boolean flag=true;
+		    int count=0;
+		    for(int i=0;i<n;i++){
+		        if(arr[i]%min!=0){
+		            flag=false;
+		            break;
+		        }
+		        if(arr[i]==min)count++;
+		    }
+		    if(flag)System.out.println(n-count);
+		    else System.out.println(n);
+		}
+*/
+We find minimum from the array elements and check if every element is divisible by it. In case any element is not divisible by min, we set 
+flag to false, as we have to divide every element by itself, and change every element to 1, so output should be number of elements, that is, n.
+However, if all elements are divisible by min, we check for elements that are equal to n, and increment our counter as they need not be changed.
+Thus, output in that case will be n-count.
