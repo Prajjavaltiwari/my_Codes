@@ -1,0 +1,16 @@
+public class Solution {
+    public static boolean isPalindrome(String str) {
+        // Write your code here.
+
+       return function(str,0,str.length()-1);
+    }
+    static boolean function (String str,int i,int j){
+      if(i>=j) return true;
+      if(str.charAt(i)!=str.charAt(j)) return false;
+      return function(str,i+1,j-1);
+
+    }
+}
+
+O(n)
+O(1)
