@@ -1,0 +1,49 @@
+// https://www.codechef.com/practice/INTNT01/problems/STRNG?tab=Submissions
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+		Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        while (t--> 0) {
+            int n=sc.nextInt();
+            
+            int[] a = new int[n];
+            for(int i=0;i<n;i++) a[i]=sc.nextInt();
+            
+            int prehcf[]=new int[n];   //prefix hcf
+		    prehcf[0]=a[0];
+		    for(int i=1;i<n;i++){
+		        prehcf[i]=gcd(prehcf[i-1],a[i]);
+		    }
+		    int sufhcf[]=new int[n]; //suffex hcf
+		    sufhcf[n-1]=a[n-1];
+		    for(int i=n-2;i>=0;i--){
+		        sufhcf[i]=gcd(a[i],sufhcf[i+1]);
+		    }
+		    int s=0;
+		    for(int i=1;i<n-1;i++){
+		        if(gcd(prehcf[i-1],sufhcf[i+1])>1){
+		            s++;
+		        }
+		    }
+		    if(prehcf[n-2]>1){
+		        s++;
+		    }
+		    if(sufhcf[1]>1){
+		        s++;
+		    }
+		    System.out.println(s);
+		
+        }
+	}
+	static int gcd(int a,int b){
+	    if(a==0){
+	        return b;
+	    }
+	    else{
+	        return gcd(b%a,a);
+	    }
+	}
+}
