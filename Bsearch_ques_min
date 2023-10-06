@@ -1,0 +1,106 @@
+//https://www.codechef.com/practice/INTBINS01/problems/MINEAT?tab=statement
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		while(t-->0){
+		     int nPiles = sc.nextInt();
+            int h = sc.nextInt();
+            int[] pArr = new int[nPiles];
+            for (int i = 0; i < nPiles; i++) {
+                pArr[i] = sc.nextInt();
+            }
+
+            System.out.println(bs(pArr, h));
+        }
+        sc.close();
+    }
+
+    private static int bs(int[] arr, int h) {
+        int low = 0;
+        int high = maxEle(arr);
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            int time = totalTimeNeeded(arr, mid);
+            if (time <= h)
+                high = mid - 1;
+            else
+                low = mid + 1;
+        }
+
+        return low;
+    }
+    
+    private static int maxEle(int[] arr) {
+        int max = Integer.MIN_VALUE;
+        for (int i : arr)
+            max = Math.max(i, max);
+
+        return max;
+    }
+
+    private static int totalTimeNeeded(int[] arr, int h) {
+        int totalH = 0;
+        for(int i: arr)
+            totalH += Math.ceil((double) i / (double) h);
+
+        return totalH;
+	}
+}
+/*
+3
+3 3
+1 2 3
+3 4
+1 2 3
+4 5
+4 3 2 7
+*/ o/p :  3   2   4
+//alternate approach
+public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		while(t-->0){
+		      
+		    int n=sc.nextInt();
+		    int h=sc.nextInt();
+		    int[] arr=new int[n];
+		    
+		    int max=Integer.MIN_VALUE;
+		    for(int i=0;i<n;i++){
+		        arr[i]=sc.nextInt();
+		        max=Math.max(max,arr[i]);
+		    }
+		    //System.out.println(max);
+		    int low=1;int high=max;int mid=0;
+		    int k=Integer.MAX_VALUE;
+		    while(low<=high)
+		    {
+		       mid=low+(high-low)/2;
+		       int count=time(arr,n,mid);
+		       //System.out.println(count);
+		       if(count>h)
+		       low=mid+1;
+		       else
+		       {
+		         k=Math.min(k,mid);
+		         high=mid-1;
+		       }
+		    }
+		  System.out.println(k); 
+		}
+		
+	}
+	static int time(int arr[],int n,int mid){
+	    int t=0;
+	    for(int i=0;i<n;i++)
+	    t+=(int)Math.ceil(arr[i]/(mid*1.0));
+	    return t;
+	    
+	}
+}
